@@ -1,54 +1,54 @@
 import React from 'react';
 import Badge from "react-bootstrap/Badge";
-import { Form } from "react-bootstrap";
+import Editor from './components/Editor.js';
+import Previewer from './components/Previewer.js';
 import './App.css';
 
+const md = `# this is a markdown previewer
+## This is a secondary heading! 
+> front end libraries projects on [freeCodeCamp](https://www.freecodecamp.org/)
+- Random Quote Machine
+- Markdown Previewer
+- Drum Machine
+- Javascript Calculator
+- Pomodoro Clock
 
-let marked = require("marked");
+You can also make text **bold**... whoa!
+Or _italic_.
+Or... wait for it... **_both!_**
+And feel free to go crazy ~~crossing stuff out~~.
+Heres some code, \`<div></div>\`, between 2 backticks.
+
+\`\`\`
+// this is multi-line code:
+
+function anotherExample(firstLine, lastLine) {
+  if (firstLine ==  && lastLine == ) {
+    return multiLineCode;
+  }
+}
+\`\`\`
+![React Logo](https://brandlogovector.com/wp-content/uploads/2020/08/React-Logo.png)
+`;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputText: `# Welcome to my React Markdown Previewer!
-
-      ## This is a sub-heading...
-      ### And here's some other cool stuff:
-      
-      
-      You can also make text **bold**... whoa!
-      Or _italic_.
-      Or... wait for it... **_both!_**
-      And feel free to go crazy ~~crossing stuff out~~.
-      
-      There's also [links](https://www.freecodecamp.com), and
-      
-      
-      - And of course there are lists.
-        - Some are bulleted.
-           - With different indentation levels.
-              - That look like this.
-      
-      
-      1. And there are numbererd lists too.
-      1. Use just 1s if you want!
-      1. And last but not least, let's not forget embedded images:
-      
-      > Block quote
-
-      ![React Logo w/ Text](public/logo192.png)`      
+      inputMarkdown: md
     }
-    this.onEditing = this.onEditing.bind(this);
-  }
+    this.handleChange = this.handleChange.bind(this);
+  };
 
-  onEditing = (event) => {
+  handleChange = e => {
     this.setState({
-      inputText: event.target.value
+      inputMarkdown: e.target.value
     });
-    event.preventDefault();
-  }
+  };
 
   render() {
+    const inputMarkdown = this.state.inputMarkdown;
+
     return (
       <div className="App">
         <div className="container">
@@ -64,27 +64,27 @@ class App extends React.Component {
                   <Badge className="text-align-center" variant="info">Editor</Badge>
                 </h2>
               </div>
-              <form>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Control className="textAreaStyles" as="textarea" value={this.state.inputText} onChange={this.state.onEditing}/>
-                </Form.Group>
-              </form>
+              <div>
+                <form>
+                  <Editor handleChange={this.handleChange}
+                          inputMarkdown={inputMarkdown} />
+                </form>
+              </div>
             </div>
+        
             <div className="col-md-6" id="preview-wrapper">
               <div className="col text-center">
                 <h2>
                   <Badge className="text-align-center" variant="info">Previewer</Badge>
                 </h2>
-              </div>
-              <div className="prevStyles" dangerouslySetInnerHTML={{__html: marked(this.state.inputText)}} id="preview">
-              </div>
+              </div>              
+              <Previewer inputMarkdown={inputMarkdown} />
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-
 
 export default App;

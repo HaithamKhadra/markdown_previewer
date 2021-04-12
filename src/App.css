@@ -1,16 +1,16 @@
 .prevStyles {
-    width: 450px;
+    width: 550px;
     height: auto;
     background-color: #81eeffd0;
     margin-left: auto;
     margin-right: auto;
-    padding: 15px;
+    padding: 5px;
     border: 2px solid #000;
     box-shadow: 5px 5px 8px 0px rgba(25,25,25,.7);
 }
 
 .textAreaStyles {
-    width: 450px;
+    width: 550px;
     height: 50vh;
     margin-left: auto;
     margin-right: auto;
