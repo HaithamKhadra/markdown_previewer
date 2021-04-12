@@ -67,17 +67,17 @@ class App extends React.Component {
               <div>
                 <form>
                   <Editor handleChange={this.handleChange}
-                          inputMarkdown={inputMarkdown} />
+                    inputMarkdown={inputMarkdown} />
                 </form>
               </div>
             </div>
-        
+
             <div className="col-md-6" id="preview-wrapper">
               <div className="col text-center">
                 <h2>
                   <Badge className="text-align-center" variant="info">Previewer</Badge>
                 </h2>
-              </div>              
+              </div>
               <Previewer inputMarkdown={inputMarkdown} />
             </div>
           </div>

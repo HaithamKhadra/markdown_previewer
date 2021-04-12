@@ -1,5 +1,5 @@
 .prevStyles {
-    width: 550px;
+    width: 100%;
     height: auto;
     background-color: #81eeffd0;
     margin-left: auto;
@@ -10,9 +10,8 @@
 }
 
 .textAreaStyles {
-    width: 550px;
-    height: 50vh;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    height: 90vh;
+    margin: 0 auto;
     padding: 8px;
 }
